@@ -3,8 +3,10 @@
 #include "hardware/pwm.h" //biblioteca para controlar o hardware de PWM
 
 #define PWM_MOTOR 22 // pino do motor conectado a GPIO como PWM. para o LED, mudar o pino para 12.
+#define tempo 5000
 
-int main(){
+int main()
+{
     stdio_init_all();
     gpio_set_function(PWM_MOTOR, GPIO_FUNC_PWM);   // Habilitar o pino GPIO como PWM
     uint slice = pwm_gpio_to_slice_num(PWM_MOTOR); // Obter o canal (slice) PWM da GPIO
@@ -14,14 +16,15 @@ int main(){
     while (true)
     {
         pwm_set_gpio_level(PWM_MOTOR, 2400); // Definir o ciclo de trabalho para 2400 us (180 graus)
-        sleep_ms(5000);                      // Aguardar 5 segundos
+        sleep_ms(tempo);                     // Aguardar 5 segundos
         pwm_set_gpio_level(PWM_MOTOR, 1470); // Definir o ciclo de trabalho para 1470 us (90 graus)
-        sleep_ms(5000);                      // Aguardar 5 segundos
+        sleep_ms(tempo);                     // Aguardar 5 segundos
         pwm_set_gpio_level(PWM_MOTOR, 500);  // Definir o ciclo de trabalho para 500 us (0 graus)
-        sleep_ms(5000);                      // Aguardar 5 segundos
-        for (int i = 500; i <= 2400; i = i + 5){
+        sleep_ms(tempo);                     // Aguardar 5 segundos
+        for (int i = 500; i <= 2400; i = i + 5)
+        {
             pwm_set_gpio_level(PWM_MOTOR, i); // Definir o ciclo de trabalho para i us (ate 180 graus)
-            sleep_ms(10);                       // Aguardar 10 milissegundos
+            sleep_ms(10);                     // Aguardar 10 milissegundos
         }
     }
 }
