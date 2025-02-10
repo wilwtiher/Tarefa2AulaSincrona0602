@@ -25,7 +25,7 @@ int main()
         sleep_ms(5000);                      // Aguardar 5 segundos
         for (int i = 500; i <= 2400; i = i + 5)
         {
-            pwm_set_gpio_level(PWM_MOTOR, 500); // Definir o ciclo de trabalho para i us (ate 180 graus)
+            pwm_set_gpio_level(PWM_MOTOR, i); // Definir o ciclo de trabalho para i us (ate 180 graus)
             sleep_ms(10);                       // Aguardar 10 milissegundos
         }
     }
