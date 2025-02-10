@@ -10,7 +10,6 @@ int main(){
     uint slice = pwm_gpio_to_slice_num(PWM_MOTOR); // Obter o canal (slice) PWM da GPIO
     pwm_set_clkdiv(slice, 125.0);                  // Definir o divisor de clock do PWM
     pwm_set_wrap(slice, 19999);                    // Definir o valor de wrap para 50 Hz
-    pwm_set_gpio_level(PWM_MOTOR, 1500);           // Definir o ciclo de trabalho para 1,5 ms (90 graus)
     pwm_set_enabled(slice, true);                  // Habilitar o PWM no slice correspondente
     while (true)
     {
